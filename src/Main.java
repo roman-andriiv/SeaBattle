@@ -29,6 +29,45 @@ public class Main {
         fillPlayerField(playerField2);
     }
     private static void fillPlayerField(char[][] playerField){
+        for (int i = 4; i >=1 ; i--) {
+            for (int j = i; j <=5 ; j++) {
+                System.out.println("We arrange a " + i + "-deck ship. It remains to arrange: " + (j + 1));
 
+                System.out.println("Input x coordinate: ");
+                int x = scanner.nextInt();
+
+                System.out.println("Input y coordinate: ");
+                int y = scanner.nextInt();
+
+                System.out.println("1 - horizontal; 2 - vertical ?");
+                int position = scanner.nextInt();
+
+                if (position == 1){
+                    for (int k = 0; k <i ; k++) {
+                        playerField[y][x+k] = '1';
+                    }
+                }
+                if (position==2){
+                    for (int m = 0; m <i ; m++) {
+                        playerField[y+m][x] = '1';
+                    }
+                }
+                printField(playerField);
+            }
+        }
+    }
+
+    static void printField(char[][] field) {
+        for (char[] cells : field) {
+            for (char cell : cells) {
+                if (cell == 0){
+                    System.out.print(" |");
+                }else {
+                    System.out.print(cell+"|");
+                }
+            }
+            System.out.println();
+            System.out.println("--------------");
+        }
     }
 }
